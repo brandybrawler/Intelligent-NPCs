@@ -85,6 +85,8 @@ Activities define what your NPCs can do in the world. These are created using th
 
     *   **Has A Job:** Check this box if the NPC should have a job.
 
+    *   **Can be recruited?:** Check this box if you want the NPC to be able to follow player commands.
+    *   
     *   **Workstation (If Has A Job is True):** If `Has A Job` is checked, you *must* select a `Workstation` actor. Use the eyedropper tool to select an activity actor in the level that has its `Activity Type` set to `Work`.
 
     > **Important:** Each NPC that has a job *must* have a unique workstation. Do not assign multiple NPCs to the same workstation.
@@ -113,11 +115,13 @@ The `Activity Type` enum dictates the primary behavior of the NPC. Here's a brea
 *   **Talking:** The NPC will attempt to engage in conversation with other nearby NPCs.
 *   **Food:** (Used in conjunction with the `Food?` flag on Activity Actors) When the NPC's hunger level is high enough, it will seek out the nearest unoccupied `BP_BaseActivityActor` that has its `Activity Type` set to `Food` and the `Food?` flag checked.
 *   **Work:** (Used in conjunction with the `Has A Job` and `Workstation` variables on the NPC) The NPC will exclusively interact with its assigned `Workstation` actor, unless it gets hungry, in which case it will seek out a `Food` activity.
+*   **Follow Player commands** This allows the NPCs to follow player commands. You have to add the AC_PlayerComponent to you player character blueprint for this to work and then set it up just like in the Thirdperson character demo blueprint.
 
 ## Troubleshooting
 
 *   **NPCs not moving:**
 
+    *   Make sure to add the AC_PlayerComponent in you player actor blueprint. Use the thirdperson demo character as reference on how to set it up.
     *   Ensure you have a `Nav Mesh Bounds Volume` in the level.
     *   Verify that the navigation mesh has been built.
     *   Confirm that the NPC is within the bounds of the NavMesh.
